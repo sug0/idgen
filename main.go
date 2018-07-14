@@ -13,7 +13,6 @@ import (
 
 var (
     keypath string
-    locker  *flock.Flock
 )
 
 func main() {
@@ -35,13 +34,15 @@ func main() {
 
     lockpath := fmt.Sprintf("%s%c%s.lock", path, os.PathSeparator, key)
     keypath = fmt.Sprintf("%s%c%s.json", path, os.PathSeparator, key)
-    locker = flock.NewFlock(lockpath)
+    locker := flock.NewFlock(lockpath)
 
+    locker.Lock()
     seq, err := openIds()
     if err != nil {
         exit.WithMsg(os.Stderr, 1, "%s: %s", os.Args[0], err)
     }
     defer saveIds(seq)
+    defer locker.Unlock()
 
     if del != "" {
         if err = seq.Free([]byte(del)); err != nil {
@@ -54,9 +55,6 @@ func main() {
 }
 
 func openIds() (*sequence.Seq, error) {
-    locker.Lock()
-    defer locker.Unlock()
-
     f, err := os.Open(keypath)
     if err != nil {
         return sequence.NewSeq(), nil
@@ -73,9 +71,6 @@ func openIds() (*sequence.Seq, error) {
 }
 
 func saveIds(seq *sequence.Seq) error {
-    locker.Lock()
-    defer locker.Unlock()
-
     f, err := os.Create(keypath)
     if err != nil {
         return err
