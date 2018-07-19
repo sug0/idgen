@@ -39,6 +39,7 @@ func main() {
     locker.Lock()
     seq, err := openIds()
     if err != nil {
+        locker.Unlock()
         exit.WithMsg(os.Stderr, 1, "%s: %s", os.Args[0], err)
     }
     defer saveIds(seq)
