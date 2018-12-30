@@ -8,7 +8,7 @@ import (
 
     "github.com/sugoiuguu/go-seq"
     "github.com/sugoiuguu/go-exit"
-    "github.com/theckman/go-flock"
+    "github.com/gofrs/flock"
 )
 
 var (
@@ -42,8 +42,8 @@ func main() {
         locker.Unlock()
         exit.WithMsg(os.Stderr, 1, "%s: %s", os.Args[0], err)
     }
-    defer saveIds(seq)
     defer locker.Unlock()
+    defer saveIds(seq)
 
     if del != "" {
         if err = seq.Free([]byte(del)); err != nil {
