@@ -47,7 +47,7 @@ func main() {
 
     if del != "" {
         if err = seq.Free([]byte(del)); err != nil {
-            exit.WithMsg(os.Stderr, 1, "%s: no given id key", os.Args[0])
+            exit.WithMsg(os.Stderr, 1, "%s: can't free given id", os.Args[0])
         }
     } else {
         os.Stdout.Write(seq.Next())
