@@ -6,8 +6,8 @@ import (
     "flag"
     "encoding/json"
 
-    "github.com/sugoiuguu/go-seq"
-    "github.com/sugoiuguu/go-exit"
+    "github.com/sug0/go-seq"
+    "github.com/sug0/go-exit"
     "github.com/gofrs/flock"
 )
 
