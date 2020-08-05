@@ -20,9 +20,9 @@ func main() {
 
     var del, key, path string
 
-    flag.StringVar(&path, "p", "", "the dir to save the ids in")
-    flag.StringVar(&key, "k", "", "the key of the id")
-    flag.StringVar(&del, "f", "", "delete the specified key")
+    flag.StringVar(&path, "p", "", "The directory to save the IDs in.")
+    flag.StringVar(&key, "k", "", "The key of the ID to generate.")
+    flag.StringVar(&del, "f", "", "Delete the specified key from a given ID.")
     flag.Parse()
 
     if path == "" {
