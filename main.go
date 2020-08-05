@@ -22,14 +22,14 @@ func main() {
 
     flag.StringVar(&path, "p", "", "The directory to save the IDs in.")
     flag.StringVar(&key, "k", "", "The key of the ID to generate.")
-    flag.StringVar(&del, "f", "", "Delete the specified key from a given ID.")
+    flag.StringVar(&del, "f", "", "Delete the specified ID from a given key.")
     flag.Parse()
 
     if path == "" {
-        exit.WithMsg(os.Stderr, 1, "%s: no given id directory", os.Args[0])
+        exit.WithMsg(os.Stderr, 1, "%s: No given ID directory.", os.Args[0])
     }
     if key == "" {
-        exit.WithMsg(os.Stderr, 1, "%s: no given id key", os.Args[0])
+        exit.WithMsg(os.Stderr, 1, "%s: No key given.", os.Args[0])
     }
 
     lockpath := fmt.Sprintf("%s%c%s.lock", path, os.PathSeparator, key)
@@ -47,7 +47,7 @@ func main() {
 
     if del != "" {
         if err = seq.Free([]byte(del)); err != nil {
-            exit.WithMsg(os.Stderr, 1, "%s: can't free given id", os.Args[0])
+            exit.WithMsg(os.Stderr, 1, "%s: Can't free the ID given: %s", os.Args[0], del)
         }
     } else {
         os.Stdout.Write(seq.Next())

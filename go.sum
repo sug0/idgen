@@ -1,0 +1,6 @@
+github.com/gofrs/flock v0.7.1 h1:DP+LD/t0njgoPBvT5MJLeliUIVQR03hiKR6vezdwHlc=
+github.com/gofrs/flock v0.7.1/go.mod h1:F1TvTiK9OcQqauNUHlbJvyl9Qa1QvF/gOUDKA14jxHU=
+github.com/sug0/go-exit v0.0.0-20190205235601-47997d719c0d h1:L7s8Bg17n+D3aa4f8J0LazqUmM9ojLXrRonRmAzHSno=
+github.com/sug0/go-exit v0.0.0-20190205235601-47997d719c0d/go.mod h1:0yI0wMw4CyNlMjIpDpIrImEHeit6waWoaJlGQRMCymA=
+github.com/sug0/go-seq v0.0.0-20180714111653-194cc4b20300 h1:Lh9xAECh67RQiTHkCbQXldiUFR/BD38PnWBxsdNd8qU=
+github.com/sug0/go-seq v0.0.0-20180714111653-194cc4b20300/go.mod h1:9FRGnGtBcWoP3PZZTvWnKNEaV3ukaNkf+OLoLD54kr4=
